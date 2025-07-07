@@ -1,69 +1,95 @@
-# React + TypeScript + Vite
+# Todo App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Todo-App built with React, TypeScript, and Redux Toolkit. This project demonstrates modern React development practices, state management, and TypeScript best practices.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Add, toggle, and delete todos**
+- **Search functionality** - Filter todos by text content
+- **Status filtering** - View all, active, or completed todos
+- **Persistent storage** - Todos are automatically saved to localStorage
+- **Modern UI** - Clean, responsive design with CSS Modules
+- **Real-time updates** - Instant UI updates with Redux
 
-## Expanding the ESLint configuration
+## Tech Stack
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- **Frontend Framework**: React 19.1.0
+- **Language**: TypeScript 5.8.3
+- **State Management**: Redux Toolkit 2.8.2
+- **Build Tool**: Vite 7.0.0
+- **Styling**: CSS Modules
+- **Icons**: React Icons 5.5.0
+- **Linting**: ESLint 9.29.0 with TypeScript support
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## Installation
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+1. **Clone the repository**
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+   ```bash
+   git clone <repository-url>
+   cd todo-app
+   ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+2. **Install dependencies**
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+   ```bash
+   npm install
+   ```
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+3. **Start the development server**
+
+   ```bash
+   npm run dev
+   ```
+
+## Available Scripts
+
+- `npm run dev` - Start development server with hot reload
+- `npm run build` - Build for production
+- `npm run lint` - Run ESLint to check code quality
+- `npm run preview` - Preview production build locally
+
+## Key Features Explained
+
+### State Management with Redux Toolkit
+
+- **Centralized State**: All todo data managed in Redux store
+- **Immutable Updates**: Using Immer for clean state mutations
+- **Memoized Selectors**: Optimized data filtering and selection
+- **Type Safety**: Full TypeScript integration with Redux
+
+### Persistent Storage
+
+- **Automatic Saving**: Todos persist across browser sessions
+- **Error Handling**: Graceful fallbacks for storage failures
+- **Real-time Sync**: Store subscription for automatic persistence
+
+### Search and Filtering
+
+- **Text Search**: Real-time filtering by todo content
+- **Status Filters**: Filter by all, active, or completed todos
+- **Combined Filters**: Search and status filters work together
+
+## 🧪 Development
+
+### TypeScript Configuration
+
+The project uses strict TypeScript configuration with:
+
+- Strict type checking enabled
+- Unused variable detection
+- No implicit any types
+
+### Code Quality
+
+- ESLint with TypeScript support
+- React Hooks rules enforcement
+- Consistent code formatting
+- Type-safe development
+
+## Acknowledgments
+
+- Built with [React](https://reactjs.org/)
+- State management with [Redux Toolkit](https://redux-toolkit.js.org/)
+- Build tool powered by [Vite](https://vitejs.dev/)
+- Icons from [React Icons](https://react-icons.github.io/react-icons/)
