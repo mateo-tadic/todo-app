@@ -1,8 +1,9 @@
 import TodoList from './components/TodoList';
+import styles from './components/App.module.css';
 
 function App() {
   return (
-    <div className="app">
+    <div className={styles.app}>
       <TodoList />
     </div>
   );
