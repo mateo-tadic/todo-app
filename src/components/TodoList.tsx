@@ -6,13 +6,19 @@ import {
   toggleTodo,
   deleteTodo,
   clearAllTodos,
+  setSearchTerm,
+  setFilterStatus,
+  selectFilteredTodos,
 } from "../store/todoSlice";
 import styles from "./TodoList.module.css";
 import { FaPlus, FaRegTrashAlt } from "react-icons/fa";
 
 const TodoList = () => {
   const [newTodoText, setNewTodoText] = useState("");
-  const todos = useSelector((state: RootState) => state.todos.todos);
+  const todos = useSelector(selectFilteredTodos);
+  const allTodos = useSelector((state: RootState) => state.todos.todos);
+  const searchTerm = useSelector((state: RootState) => state.todos.searchTerm || '');
+  const filterStatus = useSelector((state: RootState) => state.todos.filterStatus || 'all');
   const dispatch = useDispatch();
 
   const handleAddTodo = (event: React.FormEvent) => {
@@ -53,6 +59,40 @@ const TodoList = () => {
           <FaPlus />
         </button>
       </form>
+
+      {allTodos.length > 0 && (
+        <div className={styles.searchFilterContainer}>
+          <input
+            type="text"
+            id="search-todos"
+            name="search-todos"
+            value={searchTerm}
+            onChange={(event) => dispatch(setSearchTerm(event.target.value))}
+            placeholder="Search todos..."
+            className={styles.searchInput}
+          />
+          <div className={styles.filterButtons}>
+            <button
+              onClick={() => dispatch(setFilterStatus('all'))}
+              className={`${styles.filterButton} ${filterStatus === 'all' ? styles.active : ''}`}
+            >
+              All
+            </button>
+            <button
+              onClick={() => dispatch(setFilterStatus('active'))}
+              className={`${styles.filterButton} ${filterStatus === 'active' ? styles.active : ''}`}
+            >
+              Active
+            </button>
+            <button
+              onClick={() => dispatch(setFilterStatus('completed'))}
+              className={`${styles.filterButton} ${filterStatus === 'completed' ? styles.active : ''}`}
+            >
+              Completed
+            </button>
+          </div>
+        </div>
+      )}
 
       <ul className={styles.list}>
         {todos.map((todo) => (
