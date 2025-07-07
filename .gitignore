@@ -1,0 +1,57 @@
+# System Files
+.DS_Store
+.AppleDouble
+.LSOverride
+.Trashes
+.com.apple.timemachine.donotpresent
+.quarantine
+
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Node.js Dependencies & Logs
+node_modules/
+*.log
+logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Build Output
+dist/
+dist-ssr/
+.vite/
+build/
+
+# TypeScript
+*.tsbuildinfo
+
+# Env Files
+.env
+.env.*.local
+*.local
+
+# Editor & IDE Settings
+.vscode/
+!.vscode/extensions.json
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+*.code-workspace
+*.sublime-project
+*.sublime-workspace
+
+# Caches & Artifacts
+*.cache
+*.tgz
+coverage/
+
+# Testing
+*.snap
