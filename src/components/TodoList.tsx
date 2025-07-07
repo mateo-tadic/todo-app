@@ -17,8 +17,12 @@ const TodoList = () => {
   const [newTodoText, setNewTodoText] = useState("");
   const todos = useSelector(selectFilteredTodos);
   const allTodos = useSelector((state: RootState) => state.todos.todos);
-  const searchTerm = useSelector((state: RootState) => state.todos.searchTerm || '');
-  const filterStatus = useSelector((state: RootState) => state.todos.filterStatus || 'all');
+  const searchTerm = useSelector(
+    (state: RootState) => state.todos.searchTerm || ""
+  );
+  const filterStatus = useSelector(
+    (state: RootState) => state.todos.filterStatus || "all"
+  );
   const dispatch = useDispatch();
 
   const handleAddTodo = (event: React.FormEvent) => {
@@ -73,20 +77,26 @@ const TodoList = () => {
           />
           <div className={styles.filterButtons}>
             <button
-              onClick={() => dispatch(setFilterStatus('all'))}
-              className={`${styles.filterButton} ${filterStatus === 'all' ? styles.active : ''}`}
+              onClick={() => dispatch(setFilterStatus("all"))}
+              className={`${styles.filterButton} ${
+                filterStatus === "all" ? styles.active : ""
+              }`}
             >
               All
             </button>
             <button
-              onClick={() => dispatch(setFilterStatus('active'))}
-              className={`${styles.filterButton} ${filterStatus === 'active' ? styles.active : ''}`}
+              onClick={() => dispatch(setFilterStatus("active"))}
+              className={`${styles.filterButton} ${
+                filterStatus === "active" ? styles.active : ""
+              }`}
             >
               Active
             </button>
             <button
-              onClick={() => dispatch(setFilterStatus('completed'))}
-              className={`${styles.filterButton} ${filterStatus === 'completed' ? styles.active : ''}`}
+              onClick={() => dispatch(setFilterStatus("completed"))}
+              className={`${styles.filterButton} ${
+                filterStatus === "completed" ? styles.active : ""
+              }`}
             >
               Completed
             </button>
@@ -125,7 +135,11 @@ const TodoList = () => {
       </ul>
 
       {todos.length === 0 && (
-        <p className={styles.empty}>No todos yet. Add one above!</p>
+        <p className={styles.empty}>
+          {allTodos.length > 0
+            ? "No match found!"
+            : "No todos yet. Add one above!"}
+        </p>
       )}
 
       {todos.length > 0 && (
