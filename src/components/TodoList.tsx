@@ -1,7 +1,12 @@
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import type { RootState } from "../store/store";
-import { addTodo, toggleTodo, deleteTodo } from "../store/todoSlice";
+import {
+  addTodo,
+  toggleTodo,
+  deleteTodo,
+  clearAllTodos,
+} from "../store/todoSlice";
 import styles from "./TodoList.module.css";
 import { FaPlus, FaRegTrashAlt } from "react-icons/fa";
 
@@ -26,6 +31,12 @@ const TodoList = () => {
     dispatch(deleteTodo(todoId));
   };
 
+  const handleClearAll = () => {
+    if (window.confirm("Are you sure you want to delete all todos?")) {
+      dispatch(clearAllTodos());
+    }
+  };
+
   return (
     <div className={styles.container}>
       <h1 className={styles.title}>Todo App</h1>
@@ -35,7 +46,7 @@ const TodoList = () => {
           type="text"
           value={newTodoText}
           onChange={(event) => setNewTodoText(event.target.value)}
-          placeholder="Add a new todo..."
+          placeholder="Write a new todo..."
           className={styles.input}
         />
         <button type="submit" className={styles.addButton}>
@@ -75,6 +86,15 @@ const TodoList = () => {
 
       {todos.length === 0 && (
         <p className={styles.empty}>No todos yet. Add one above!</p>
+      )}
+
+      {todos.length > 0 && (
+        <div className={styles.clearAllContainer}>
+          <button onClick={handleClearAll} className={styles.clearAllButton}>
+            Delete all
+            <FaRegTrashAlt />
+          </button>
+        </div>
       )}
     </div>
   );
