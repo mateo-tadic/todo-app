@@ -35,6 +35,46 @@
   background: #2672ff;
 }
 
+.searchFilterContainer {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.searchInput {
+  padding: 10px;
+  border: 1px solid #dddddd;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.filterButtons {
+  display: flex;
+  gap: 5px;
+}
+
+.filterButton {
+  flex: 1;
+  padding: 8px 12px;
+  background: #f8f9fa;
+  border: 1px solid #dddddd;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.2s;
+}
+
+.filterButton:hover {
+  background: #e9ecef;
+}
+
+.filterButton.active {
+  background: #1c6bff;
+  color: white;
+  border-color: #1c6bff;
+}
+
 .list {
   list-style: none;
   padding: 0;
